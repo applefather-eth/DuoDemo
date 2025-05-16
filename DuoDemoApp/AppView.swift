@@ -1,21 +1,48 @@
-//
-//  ContentView.swift
-//  DuoDemoApp
-//
-//  Created by Matheus Gois on 03/02/2024.
-//
-
 import ActivityKit
 import SwiftUI
 import SwiftData
 
 @available(iOS 16.1, *)
-struct ContentView: View {
+struct AppView: View {
 	@StateObject private var viewModel = ChatViewModel()
     @ObservedObject var manager = ActivityManager()
+    @State private var currentPage = 0
 
     var body: some View {
-		VStack {
+        VStack {
+            // Tab selector
+            HStack {
+                Spacer()
+                TabButton(title: "Chat", isSelected: currentPage == 0) {
+                    withAnimation {
+                        currentPage = 0
+                    }
+                }
+                Spacer()
+                TabButton(title: "Activities", isSelected: currentPage == 1) {
+                    withAnimation {
+                        currentPage = 1
+                    }
+                }
+                Spacer()
+            }
+            .padding(.top)
+            
+            // Paging ScrollView
+            TabView(selection: $currentPage) {
+                contentView
+                    .tag(0)
+                
+                menuView
+                    .tag(1)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+        }
+    }
+    
+    // Chat view as the main content
+    private var contentView: some View {
+        VStack {
 			// App header
 			HStack {
 				Text("Petie")
@@ -43,7 +70,7 @@ struct ContentView: View {
 					}
 				}
 			}
-			.background(Color(.systemBackground))
+			.background(Color(.white))
 			
 			// Input area
 			VStack {
@@ -81,7 +108,10 @@ struct ContentView: View {
 			.background(Color.white)
 			.cornerRadius(10)
 		}
-
+    }
+    
+    // Activities management as the menu
+    private var menuView: some View {
         NavigationView {
             Form {
                 Section {
@@ -123,7 +153,7 @@ struct ContentView: View {
 // MARK: - List
 
 @available(iOS 16.1, *)
-extension ContentView {
+extension AppView {
 
     func activitiesView() -> some View {
         ScrollView {
@@ -153,5 +183,31 @@ extension ContentView {
                     manager.listAllDeliveries()
                 }
         }.padding(.vertical)
+    }
+}
+
+// MARK: - Components
+
+// Custom tab button
+private struct TabButton: View {
+    let title: String
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 8) {
+                Text(title)
+                    .fontWeight(isSelected ? .bold : .regular)
+                    .foregroundColor(isSelected ? .primary : .secondary)
+                
+                // Indicator line
+                Rectangle()
+                    .frame(height: 3)
+                    .foregroundColor(isSelected ? Color("action") : Color.clear)
+                    .cornerRadius(1.5)
+            }
+        }
+        .padding(.horizontal)
     }
 }

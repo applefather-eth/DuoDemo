@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1314F23128F46ACA00FD0AC7 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1314F23028F46AC900FD0AC7 /* ActivityKit.framework */; };
-		13BBEA6428A7DD5D00FB1686 /* DuoDemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA6328A7DD5D00FB1686 /* DuoDemoAppApp.swift */; };
-		13BBEA6628A7DD5D00FB1686 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA6528A7DD5D00FB1686 /* ContentView.swift */; };
+		13BBEA6428A7DD5D00FB1686 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA6328A7DD5D00FB1686 /* Main.swift */; };
+		13BBEA6628A7DD5D00FB1686 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA6528A7DD5D00FB1686 /* AppView.swift */; };
 		13BBEA6828A7DD5D00FB1686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13BBEA6728A7DD5D00FB1686 /* Assets.xcassets */; };
 		13BBEA6B28A7DD5D00FB1686 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13BBEA6A28A7DD5D00FB1686 /* Preview Assets.xcassets */; };
 		13BBEA7828A7DDA100FB1686 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13BBEA7728A7DDA100FB1686 /* WidgetKit.framework */; };
@@ -61,8 +61,8 @@
 		1352BAF228BF8028004CD5E7 /* DuoDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DuoDemoApp.entitlements; sourceTree = "<group>"; };
 		1352BAF328BF82B6004CD5E7 /* DuoTrackWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DuoTrackWidgetExtension.entitlements; sourceTree = "<group>"; };
 		13BBEA6028A7DD5D00FB1686 /* DuoDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuoDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13BBEA6328A7DD5D00FB1686 /* DuoDemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoDemoAppApp.swift; sourceTree = "<group>"; };
-		13BBEA6528A7DD5D00FB1686 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		13BBEA6328A7DD5D00FB1686 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		13BBEA6528A7DD5D00FB1686 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		13BBEA6728A7DD5D00FB1686 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13BBEA6A28A7DD5D00FB1686 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		13BBEA7528A7DDA100FB1686 /* DuoTrackWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DuoTrackWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,8 +135,8 @@
 				7C006CAD2DD6E9E400FAF5E5 /* Memory.swift */,
 				7C006CAE2DD6E9E400FAF5E5 /* Message.swift */,
 				7C006CAF2DD6E9E400FAF5E5 /* MessageBubble.swift */,
-				13BBEA6328A7DD5D00FB1686 /* DuoDemoAppApp.swift */,
-				13BBEA6528A7DD5D00FB1686 /* ContentView.swift */,
+				13BBEA6328A7DD5D00FB1686 /* Main.swift */,
+				13BBEA6528A7DD5D00FB1686 /* AppView.swift */,
 				2E0048CD2B6EAB4500B61537 /* Helpers */,
 				2E0048C92B6E9E4900B61537 /* SupportFiles */,
 				13BBEA6928A7DD5D00FB1686 /* Preview Content */,
@@ -292,6 +292,8 @@
 				Base,
 			);
 			mainGroup = 13BBEA5728A7DD5D00FB1686;
+			packageReferences = (
+			);
 			productRefGroup = 13BBEA6128A7DD5D00FB1686 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -328,7 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13BBEA6628A7DD5D00FB1686 /* ContentView.swift in Sources */,
+				13BBEA6628A7DD5D00FB1686 /* AppView.swift in Sources */,
 				2E0048CF2B6EAC4D00B61537 /* DeepLink.swift in Sources */,
 				13BBEA8928A7DEAB00FB1686 /* DuoDemoAppAttributes.swift in Sources */,
 				2E0048CB2B6E9FE500B61537 /* ActivityManager.swift in Sources */,
@@ -339,7 +341,7 @@
 				7C006CB72DD6E9E400FAF5E5 /* MessageBubble.swift in Sources */,
 				2E0048C72B6E9DC400B61537 /* DeepLinkManager.swift in Sources */,
 				2E0048C52B6E9D9300B61537 /* NotificationManager.swift in Sources */,
-				13BBEA6428A7DD5D00FB1686 /* DuoDemoAppApp.swift in Sources */,
+				13BBEA6428A7DD5D00FB1686 /* Main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

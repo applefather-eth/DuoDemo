@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @main
-struct DuoDemoAppApp: App {
+struct Main: App {
 
     init() {
         NotificationManager.registerForNotification()
@@ -18,8 +18,7 @@ struct DuoDemoAppApp: App {
     var body: some Scene {
         WindowGroup {
             if #available(iOS 16.1, *) {
-                ContentView()
-					.colorScheme(.light)
+				AppView()
 					.onOpenURL { url in
                     DeepLinkManager.managerDeepLink(with: url)
                 }
