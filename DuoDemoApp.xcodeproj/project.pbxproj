@@ -24,6 +24,12 @@
 		2E0048CB2B6E9FE500B61537 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048CA2B6E9FE500B61537 /* ActivityManager.swift */; };
 		2E0048CF2B6EAC4D00B61537 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */; };
 		2E0048D02B6EAC9300B61537 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */; };
+		7C006CB02DD6E9E400FAF5E5 /* .env in Resources */ = {isa = PBXBuildFile; fileRef = 7C006CA82DD6E9E400FAF5E5 /* .env */; };
+		7C006CB32DD6E9E400FAF5E5 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006CAD2DD6E9E400FAF5E5 /* Memory.swift */; };
+		7C006CB42DD6E9E400FAF5E5 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006CA92DD6E9E400FAF5E5 /* ChatViewModel.swift */; };
+		7C006CB52DD6E9E400FAF5E5 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006CAA2DD6E9E400FAF5E5 /* Config.swift */; };
+		7C006CB62DD6E9E400FAF5E5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006CAE2DD6E9E400FAF5E5 /* Message.swift */; };
+		7C006CB72DD6E9E400FAF5E5 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006CAF2DD6E9E400FAF5E5 /* MessageBubble.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,12 @@
 		2E0048C62B6E9DC400B61537 /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		2E0048CA2B6E9FE500B61537 /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
 		2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
+		7C006CA82DD6E9E400FAF5E5 /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
+		7C006CA92DD6E9E400FAF5E5 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		7C006CAA2DD6E9E400FAF5E5 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		7C006CAD2DD6E9E400FAF5E5 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		7C006CAE2DD6E9E400FAF5E5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		7C006CAF2DD6E9E400FAF5E5 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +129,12 @@
 		13BBEA6228A7DD5D00FB1686 /* DuoDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				7C006CA82DD6E9E400FAF5E5 /* .env */,
+				7C006CA92DD6E9E400FAF5E5 /* ChatViewModel.swift */,
+				7C006CAA2DD6E9E400FAF5E5 /* Config.swift */,
+				7C006CAD2DD6E9E400FAF5E5 /* Memory.swift */,
+				7C006CAE2DD6E9E400FAF5E5 /* Message.swift */,
+				7C006CAF2DD6E9E400FAF5E5 /* MessageBubble.swift */,
 				13BBEA6328A7DD5D00FB1686 /* DuoDemoAppApp.swift */,
 				13BBEA6528A7DD5D00FB1686 /* ContentView.swift */,
 				2E0048CD2B6EAB4500B61537 /* Helpers */,
@@ -289,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C006CB02DD6E9E400FAF5E5 /* .env in Resources */,
 				13BBEA6B28A7DD5D00FB1686 /* Preview Assets.xcassets in Resources */,
 				13BBEA6828A7DD5D00FB1686 /* Assets.xcassets in Resources */,
 			);
@@ -313,6 +332,11 @@
 				2E0048CF2B6EAC4D00B61537 /* DeepLink.swift in Sources */,
 				13BBEA8928A7DEAB00FB1686 /* DuoDemoAppAttributes.swift in Sources */,
 				2E0048CB2B6E9FE500B61537 /* ActivityManager.swift in Sources */,
+				7C006CB32DD6E9E400FAF5E5 /* Memory.swift in Sources */,
+				7C006CB42DD6E9E400FAF5E5 /* ChatViewModel.swift in Sources */,
+				7C006CB52DD6E9E400FAF5E5 /* Config.swift in Sources */,
+				7C006CB62DD6E9E400FAF5E5 /* Message.swift in Sources */,
+				7C006CB72DD6E9E400FAF5E5 /* MessageBubble.swift in Sources */,
 				2E0048C72B6E9DC400B61537 /* DeepLinkManager.swift in Sources */,
 				2E0048C52B6E9D9300B61537 /* NotificationManager.swift in Sources */,
 				13BBEA6428A7DD5D00FB1686 /* DuoDemoAppApp.swift in Sources */,

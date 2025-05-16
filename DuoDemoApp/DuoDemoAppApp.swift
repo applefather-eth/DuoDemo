@@ -18,7 +18,9 @@ struct DuoDemoAppApp: App {
     var body: some Scene {
         WindowGroup {
             if #available(iOS 16.1, *) {
-                ContentView().onOpenURL { url in
+                ContentView()
+					.colorScheme(.light)
+					.onOpenURL { url in
                     DeepLinkManager.managerDeepLink(with: url)
                 }
             }
