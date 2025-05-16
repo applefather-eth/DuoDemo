@@ -34,5 +34,5 @@ struct DuoDemoAppAttributes: ActivityAttributes, Identifiable {
     }
 
     let flow: DeepLink
-    let id = UUID()
+	var id = UUID()
 }
