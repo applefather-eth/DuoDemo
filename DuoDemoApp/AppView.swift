@@ -6,6 +6,7 @@ import SwiftData
 struct AppView: View {
 	@StateObject private var viewModel = ChatViewModel()
     @ObservedObject var manager = ActivityManager()
+    @StateObject private var healthKitManager = HealthKitManager()
     @State private var currentPage = 0
 
     var body: some View {
@@ -36,7 +37,21 @@ struct AppView: View {
                 ActivitiesTabView(manager: manager, activitiesView: {
                     AnyView(activitiesView())
                 })
-                    .tag(1)
+                .tag(1)
+                .overlay(
+                    VStack {
+                        if #available(iOS 16.1, *) {
+                            HStack {
+                                Image(systemName: "figure.walk")
+                                Text("Steps today: \(Int(healthKitManager.stepCount))")
+                                    .font(.headline)
+                                    .padding(.vertical, 4)
+                            }
+                            .padding(.top, 8)
+                        }
+                        Spacer()
+                    }
+                )
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }
