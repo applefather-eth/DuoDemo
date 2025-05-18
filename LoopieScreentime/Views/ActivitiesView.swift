@@ -22,8 +22,7 @@ struct ActivitiesView: View {
             List(activities.apps) { app in
                 ListItem(app: app)
             }
-        }
-        
+        }        
     }
 
     // Function to format total usage time
@@ -35,12 +34,4 @@ struct ActivitiesView: View {
         return String(format: "%dh %02dm %02ds", hours, minutes, seconds)
     }
 
-}
-
-
-
-struct ActivitiesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ActivitiesView(activities: DeviceActivity(duration: .zero, apps: [AppReport(id: "1", name: "Twitter", duration: .zero)]))
-    }
 }

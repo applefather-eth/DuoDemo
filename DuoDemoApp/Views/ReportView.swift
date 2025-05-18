@@ -24,9 +24,3 @@ struct ReportsView: View {
         }
     }
 }
-
-struct ReportsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReportsView()
-    }
-}

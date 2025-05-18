@@ -28,11 +28,3 @@ struct ListItem: View {
         }
     }
 }
-
-struct List_Previews: PreviewProvider {
-    static var previews: some View {
-        ListItem(app: AppReport(id: "1",
-                                name: "Twitter",
-                                duration: .zero))
-    }
-}
