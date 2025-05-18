@@ -30,6 +30,8 @@
 		7C006CB52DD6E9E400FAF5E5 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006CAA2DD6E9E400FAF5E5 /* Config.swift */; };
 		7C006CB62DD6E9E400FAF5E5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006CAE2DD6E9E400FAF5E5 /* Message.swift */; };
 		7C006CB72DD6E9E400FAF5E5 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006CAF2DD6E9E400FAF5E5 /* MessageBubble.swift */; };
+		7C006E172DD98AD100FAF5E5 /* ChatTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006E162DD98AD100FAF5E5 /* ChatTabView.swift */; };
+		7C006E182DD98AD100FAF5E5 /* ActivitiesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006E152DD98AD100FAF5E5 /* ActivitiesTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		7C006CAD2DD6E9E400FAF5E5 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		7C006CAE2DD6E9E400FAF5E5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7C006CAF2DD6E9E400FAF5E5 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		7C006E152DD98AD100FAF5E5 /* ActivitiesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTabView.swift; sourceTree = "<group>"; };
+		7C006E162DD98AD100FAF5E5 /* ChatTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,8 @@
 				7C006CAD2DD6E9E400FAF5E5 /* Memory.swift */,
 				7C006CAE2DD6E9E400FAF5E5 /* Message.swift */,
 				7C006CAF2DD6E9E400FAF5E5 /* MessageBubble.swift */,
+				7C006E152DD98AD100FAF5E5 /* ActivitiesTabView.swift */,
+				7C006E162DD98AD100FAF5E5 /* ChatTabView.swift */,
 				13BBEA6328A7DD5D00FB1686 /* Main.swift */,
 				13BBEA6528A7DD5D00FB1686 /* AppView.swift */,
 				2E0048CD2B6EAB4500B61537 /* Helpers */,
@@ -341,6 +347,8 @@
 				7C006CB72DD6E9E400FAF5E5 /* MessageBubble.swift in Sources */,
 				2E0048C72B6E9DC400B61537 /* DeepLinkManager.swift in Sources */,
 				2E0048C52B6E9D9300B61537 /* NotificationManager.swift in Sources */,
+				7C006E172DD98AD100FAF5E5 /* ChatTabView.swift in Sources */,
+				7C006E182DD98AD100FAF5E5 /* ActivitiesTabView.swift in Sources */,
 				13BBEA6428A7DD5D00FB1686 /* Main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
