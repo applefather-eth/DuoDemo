@@ -7,11 +7,17 @@
 
 import Foundation
 import SwiftUI
+import FamilyControls
 
 @main
 struct Main: App {
+	@StateObject private var screenTimeManager = ScreenTimeManager()
 
     init() {
+		Task {
+			try? await AuthorizationCenter.shared.requestAuthorization(for: .individual)
+		}
+
         NotificationManager.registerForNotification()
     }
 
@@ -19,6 +25,7 @@ struct Main: App {
         WindowGroup {
             if #available(iOS 16.1, *) {
 				AppView()
+					.environmentObject(screenTimeManager)
 					.onOpenURL { url in
                     DeepLinkManager.managerDeepLink(with: url)
                 }

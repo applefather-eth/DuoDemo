@@ -25,6 +25,9 @@
 		</dict>
 		<dict/>
 	</array>
+	<key>NSFamilyControlsDescription</key>
+	<string>Haru needs access to Screen Time data to compare usage with friends for the screen time competition.</string>
+
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
