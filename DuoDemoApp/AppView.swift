@@ -1,4 +1,5 @@
 import ActivityKit
+import HealthKit
 import SwiftUI
 import SwiftData
 
@@ -39,7 +40,7 @@ struct AppView: View {
                 })
                 .tag(1)
                 .overlay(
-                    VStack {
+                    VStack(alignment: .leading, spacing: 8) {
                         if #available(iOS 16.1, *) {
                             HStack {
                                 Image(systemName: "figure.walk")
@@ -48,6 +49,37 @@ struct AppView: View {
                                     .padding(.vertical, 4)
                             }
                             .padding(.top, 8)
+
+                            // Sleep data section
+                            if !healthKitManager.sleepSamples.isEmpty {
+                                Text("Sleep & Wake Data:")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                ForEach(healthKitManager.sleepSamples, id: \.uuid) { sample in
+                                    HStack {
+                                        let state: String = {
+                                            switch sample.value {
+                                            case HKCategoryValueSleepAnalysis.inBed.rawValue:
+                                                return "In Bed"
+                                            case HKCategoryValueSleepAnalysis.asleep.rawValue:
+                                                return "Asleep"
+                                            case HKCategoryValueSleepAnalysis.awake.rawValue:
+                                                return "Awake"
+                                            default:
+                                                return "Other"
+                                            }
+                                        }()
+                                        Text(state)
+                                        Text("\(sample.startDate, style: .time) - \(sample.endDate, style: .time)")
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .font(.caption)
+                                }
+                            } else {
+                                Text("No sleep data for today.")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
                         }
                         Spacer()
                     }
