@@ -85,8 +85,8 @@ struct AppView: View {
                     }
                 )
 				
-				ScreenTimeView()
-					.tag(2)
+//				ScreenTimeView()
+//					.tag(2)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }

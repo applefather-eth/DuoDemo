@@ -41,8 +41,10 @@ class HealthKitManager: ObservableObject {
 
     func fetchSleepData() {
         let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!
-        let startOfDay = Calendar.current.startOfDay(for: Date())
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: Date(), options: .strictStartDate)
+        let calendar = Calendar.current
+        let startOfToday = calendar.startOfDay(for: Date())
+        guard let startOfYesterday = calendar.date(byAdding: .day, value: -1, to: startOfToday) else { return }
+        let predicate = HKQuery.predicateForSamples(withStart: startOfYesterday, end: startOfToday, options: .strictStartDate)
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: 30, sortDescriptors: [sortDescriptor]) { [weak self] _, samples, _ in
             guard let self = self else { return }
