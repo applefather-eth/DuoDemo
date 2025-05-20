@@ -15,7 +15,7 @@ struct ChatTabView: View {
         VStack {
             // App header
             HStack {
-                Text("Petie")
+                Text("Loopie")
                     .font(.largeTitle)
                     .bold()
                 Spacer()
@@ -109,6 +109,14 @@ struct ChatTabView: View {
         // Present the image picker sheet
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(sourceType: imagePickerSourceType, selectedImage: $selectedImage)
+        }
+        // When a new image is selected, send it to ChatGPT
+        .onChange(of: selectedImage) { newImage in
+            if let image = newImage {
+                viewModel.sendMealPhotoToChatGPT(image: image)
+                // Optionally clear the selected image after sending
+                selectedImage = nil
+            }
         }
     }
 } 

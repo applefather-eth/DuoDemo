@@ -1,6 +1,7 @@
 import Foundation
 import Speech
 import AVFoundation
+import SwiftUI
 
 class ChatViewModel: ObservableObject {
     @Published var messages: [Message] = []
@@ -590,5 +591,155 @@ class ChatViewModel: ObservableObject {
         }
         
         return [:]
+    }
+    
+    // Send a meal photo to ChatGPT Vision API with a prompt to analyze foods and calories
+    func sendMealPhotoToChatGPT(image: UIImage) {
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else { return }
+        let base64Image = imageData.base64EncodedString()
+        let prompt = """
+This is a meal photo. List the main foods and estimate the total calories.
+"""
+        
+        // Add the user's image as a message (optional, for chat history)
+        let userMessage = Message(
+            content: "[Photo sent]",
+            sender: .user,
+            isFunctionCallResult: false,
+            messageType: .regular,
+            toolCallId: nil,
+            hasToolCalls: false,
+            toolCalls: nil
+        )
+        DispatchQueue.main.async {
+            self.messages.append(userMessage)
+            self.isProcessing = true
+        }
+        
+        // Prepare the request for OpenAI Vision API (gpt-4-vision-preview)
+        let url = URL(string: "https://api.openai.com/v1/chat/completions")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(openAIAPIKey)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let requestBody: [String: Any] = [
+            "model": "gpt-4o",
+            "messages": [
+                [
+                    "role": "user",
+                    "content": [
+                        ["type": "text", "text": prompt],
+                        ["type": "image_url", "image_url": ["url": "data:image/jpeg;base64,\(base64Image)"]]
+                    ]
+                ]
+            ],
+            "max_tokens": 500
+        ]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
+        } catch {
+            DispatchQueue.main.async {
+                self.isProcessing = false
+                let errorMessage = Message(
+                    content: "Error encoding image request: \(error.localizedDescription)",
+                    sender: .assistant,
+                    isFunctionCallResult: false,
+                    messageType: .regular,
+                    toolCallId: nil,
+                    hasToolCalls: false,
+                    toolCalls: nil
+                )
+                self.messages.append(errorMessage)
+            }
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                self.isProcessing = false
+            }
+            if let error = error {
+                DispatchQueue.main.async {
+                    let errorMessage = Message(
+                        content: "Error: \(error.localizedDescription)",
+                        sender: .assistant,
+                        isFunctionCallResult: false,
+                        messageType: .regular,
+                        toolCallId: nil,
+                        hasToolCalls: false,
+                        toolCalls: nil
+                    )
+                    self.messages.append(errorMessage)
+                }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    let errorMessage = Message(
+                        content: "No data received from API.",
+                        sender: .assistant,
+                        isFunctionCallResult: false,
+                        messageType: .regular,
+                        toolCallId: nil,
+                        hasToolCalls: false,
+                        toolCalls: nil
+                    )
+                    self.messages.append(errorMessage)
+                }
+                return
+            }
+            if let responseString = String(data: data, encoding: .utf8) {
+                print("GPT Vision API Response: \n\(responseString)")
+            }
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                   let choices = json["choices"] as? [[String: Any]],
+                   let choice = choices.first,
+                   let message = choice["message"] as? [String: Any],
+                   let content = message["content"] as? String {
+                    let assistantMessage = Message(
+                        content: content,
+                        sender: .assistant,
+                        isFunctionCallResult: false,
+                        messageType: .regular,
+                        toolCallId: nil,
+                        hasToolCalls: false,
+                        toolCalls: nil
+                    )
+                    DispatchQueue.main.async {
+                        self.messages.append(assistantMessage)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let errorMessage = Message(
+                            content: "Failed to parse API response.",
+                            sender: .assistant,
+                            isFunctionCallResult: false,
+                            messageType: .regular,
+                            toolCallId: nil,
+                            hasToolCalls: false,
+                            toolCalls: nil
+                        )
+                        self.messages.append(errorMessage)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    let errorMessage = Message(
+                        content: "Error decoding API response: \(error.localizedDescription)",
+                        sender: .assistant,
+                        isFunctionCallResult: false,
+                        messageType: .regular,
+                        toolCallId: nil,
+                        hasToolCalls: false,
+                        toolCalls: nil
+                    )
+                    self.messages.append(errorMessage)
+                }
+            }
+        }
+        task.resume()
     }
 } 
