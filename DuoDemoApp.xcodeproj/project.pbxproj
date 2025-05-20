@@ -35,6 +35,7 @@
 		7C006E252DD98D1800FAF5E5 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006E242DD98D1800FAF5E5 /* HealthKitManager.swift */; };
 		7C006E362DD9C0C200FAF5E5 /* LoopieScreentime.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 7C006E2A2DD9C0C200FAF5E5 /* LoopieScreentime.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7C006E442DD9C8EC00FAF5E5 /* ScreenTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C006E3E2DD9C8EC00FAF5E5 /* ScreenTimeManager.swift */; };
+		7C55B6DF2DDC241500520564 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C55B6DE2DDC241500520564 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		7C006E242DD98D1800FAF5E5 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		7C006E2A2DD9C0C200FAF5E5 /* LoopieScreentime.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = LoopieScreentime.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C006E3E2DD9C8EC00FAF5E5 /* ScreenTimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeManager.swift; sourceTree = "<group>"; };
+		7C55B6DE2DDC241500520564 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -192,6 +194,7 @@
 				7C006E412DD9C8EC00FAF5E5 /* Views */,
 				7C006CAF2DD6E9E400FAF5E5 /* MessageBubble.swift */,
 				7C006E242DD98D1800FAF5E5 /* HealthKitManager.swift */,
+				7C55B6DE2DDC241500520564 /* ImagePicker.swift */,
 				7C006E152DD98AD100FAF5E5 /* ActivitiesTabView.swift */,
 				7C006E162DD98AD100FAF5E5 /* ChatTabView.swift */,
 				13BBEA6328A7DD5D00FB1686 /* Main.swift */,
@@ -442,6 +445,7 @@
 				2E0048C72B6E9DC400B61537 /* DeepLinkManager.swift in Sources */,
 				2E0048C52B6E9D9300B61537 /* NotificationManager.swift in Sources */,
 				7C006E172DD98AD100FAF5E5 /* ChatTabView.swift in Sources */,
+				7C55B6DF2DDC241500520564 /* ImagePicker.swift in Sources */,
 				7C006E182DD98AD100FAF5E5 /* ActivitiesTabView.swift in Sources */,
 				13BBEA6428A7DD5D00FB1686 /* Main.swift in Sources */,
 			);

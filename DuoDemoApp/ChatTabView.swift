@@ -4,6 +4,11 @@ import SwiftUI
 struct ChatTabView: View {
     @ObservedObject var viewModel: ChatViewModel
     
+    // State variable to show image picker
+    @State private var showImagePicker = false
+    // State variable to hold the selected image
+    @State private var selectedImage: UIImage? = nil
+    
     var body: some View {
         VStack {
             // App header
@@ -37,6 +42,15 @@ struct ChatTabView: View {
             
             // Input area
             VStack {
+                if let image = selectedImage {
+                    // Preview the selected image
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 150)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                }
                 if viewModel.isProcessing {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
@@ -63,6 +77,15 @@ struct ChatTabView: View {
                     }
                     .disabled(viewModel.inputMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.isProcessing)
                     
+                    // Take Photo button
+                    Button(action: {
+                        showImagePicker = true
+                    }) {
+                        Image(systemName: "camera")
+                            .font(.system(size: 30))
+                            .foregroundColor(Color("action"))
+                    }
+                    
                     // Voice input button
                 }
                 .padding(.horizontal)
@@ -70,6 +93,10 @@ struct ChatTabView: View {
             }
             .background(Color.white)
             .cornerRadius(10)
+        }
+        // Present the image picker sheet
+        .sheet(isPresented: $showImagePicker) {
+            ImagePicker(sourceType: .camera, selectedImage: $selectedImage)
         }
     }
 } 
