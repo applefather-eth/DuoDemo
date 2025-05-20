@@ -8,6 +8,8 @@ struct ChatTabView: View {
     @State private var showImagePicker = false
     // State variable to hold the selected image
     @State private var selectedImage: UIImage? = nil
+    // State variable for image picker source type
+    @State private var imagePickerSourceType: UIImagePickerController.SourceType = .camera
     
     var body: some View {
         VStack {
@@ -79,9 +81,19 @@ struct ChatTabView: View {
                     
                     // Take Photo button
                     Button(action: {
+                        imagePickerSourceType = .camera
                         showImagePicker = true
                     }) {
                         Image(systemName: "camera")
+                            .font(.system(size: 30))
+                            .foregroundColor(Color("action"))
+                    }
+                    // Pick Photo from Library button
+                    Button(action: {
+                        imagePickerSourceType = .photoLibrary
+                        showImagePicker = true
+                    }) {
+                        Image(systemName: "photo.on.rectangle")
                             .font(.system(size: 30))
                             .foregroundColor(Color("action"))
                     }
@@ -96,7 +108,7 @@ struct ChatTabView: View {
         }
         // Present the image picker sheet
         .sheet(isPresented: $showImagePicker) {
-            ImagePicker(sourceType: .camera, selectedImage: $selectedImage)
+            ImagePicker(sourceType: imagePickerSourceType, selectedImage: $selectedImage)
         }
     }
 } 
